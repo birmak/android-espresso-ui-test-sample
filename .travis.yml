@@ -1,19 +1,16 @@
 language: android
 
 android:
-    update_sdk: true
-    components:
-        - platform-tools
-        - tools
-        - build-tools-24.0.2
-        - android-24
-        
-before_script:
-#get Android list
-  - echo $(android list targets)
+  components:
+    - build-tools-24.0.2
+    - android-22
+  licenses:
+    - 'android-sdk-preview-license-52d11cd2'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
 
 # Emulator Management: Create, Start and Wait  
-  - echo no | android create avd --force -n test -t android-24 --abi armeabi-v7a -c 100M
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 100M
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
