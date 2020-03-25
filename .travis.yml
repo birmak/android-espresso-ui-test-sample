@@ -1,11 +1,10 @@
 language: android
 
-#get Android list
-android_targets:
-  - android list targets
-  
-# Emulator Management: Create, Start and Wait
 before_script:
+#get Android list
+  - android list targets
+
+# Emulator Management: Create, Start and Wait  
   - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a -c 100M
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
